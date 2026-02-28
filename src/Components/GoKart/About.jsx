@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import Footer from "../Footer/Footer";
 
+// Anmol Gour
+
+
 export default function About() {
   return (
     <>
