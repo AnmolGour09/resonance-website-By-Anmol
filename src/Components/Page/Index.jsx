@@ -130,25 +130,38 @@ export default function Index() {
 
       {/* About Section */}
       {isMobile ? (
-        <section
-          ref={aboutRef}
-          data-section="about"
-          className="w-full mt-24 bg-[#101010] flex flex-col items-center justify-center py-8 px-4 gap-4"
-        >
-          {/* Image Section */}
-          <div className="relative overflow-hidden rounded-2xl shadow-2xl group cursor-pointer w-full max-w-sm">
-            <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-black/30 z-10 transition-all duration-500"></div>
-            <img
-              alt="About REEV"
-              className="w-full h-48 rounded-2xl object-cover transition-transform duration-500"
-              loading="lazy"
-              src="/banner 2.png"
-            />
-          </div>
+  <section
+    ref={aboutRef}
+    data-section="about"
+    className="w-full mt-24 bg-[#101010] flex flex-col items-center justify-center py-8 px-4 gap-6"
+  >
+    {/* Image */}
+    <div className="relative overflow-hidden rounded-2xl shadow-2xl w-full max-w-sm">
+      <img
+        alt="About REEV"
+        className="w-full h-52 rounded-2xl object-cover"
+        loading="lazy"
+        src="/banner 2.png"
+      />
+    </div>
 
-          {/* Text Section */}
-          
-        </section>
+    {/* Text */}
+    <div className="text-center px-2">
+      <h2 className="text-2xl font-bold text-white font-mono mb-4">
+        About Us
+      </h2>
+
+      <p className="text-gray-300 text-sm leading-relaxed">
+        Globally we are witnessing a technology shift in the automotive
+        industry from conventional fuel-powered vehicles to alternative
+        fuel-powered vehicles. With the Indian government's initiative
+        towards faster adoption of EVs through FAME-II policy, we are
+        aligned to take this opportunity to develop indigenous solutions
+        for the Indian market.
+      </p>
+    </div>
+  </section>
+
       ) : (
         <motion.section
           ref={aboutRef}
@@ -179,7 +192,7 @@ export default function Index() {
             />
           </motion.div>
 
-          {/* Text Section */}
+          {/* About Section */}
           <motion.div
             className="flex-1 lg:text-left text-center"
             variants={fadeInUp}
