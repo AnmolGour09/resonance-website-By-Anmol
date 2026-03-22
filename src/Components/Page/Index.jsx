@@ -462,12 +462,8 @@ export default function Index() {
             <span className="card-subtitle text-white text-sm sm:text-base">Electric Hypercar</span>
           </div>
           <p className="text-white font-light text-sm sm:text-lg leading-relaxed">
-            "Globally we are witnessing a technology shift in the automotive
-                    industry from conventional fuel-powered vehicles to alternative
-                    fuel-powered vehicles. With the Indian government's initiative
-                    towards faster adoption of EVs through FAME-II policy, we are
-                    aligned to take this opportunity to develop indigenous solutions
-                    for the Indian market."
+            Resonance Racing is a Collegiate Motorsports club of AISSMS COE which provides an opportunity for students to pursue their passion for automobile engineering REEV team is a subsidiary of Resonance Racing which was started in 2021 with aim of competing in SAE Competition.
+            Resonance Racing REEV highly backed by college administration, and experienced faculty advisers. Team consists of highly technical skilled members who together in unison manufactures state of the art Champion.
           </p>
           <button className="vehicle-cta mt-2 sm:mt-4">
             <span className="text-red-500 font-cursive text-sm sm:text-base">Learn More</span>
@@ -484,18 +480,14 @@ export default function Index() {
         </div>
         <div className="card-content">
           <div className="card-image">
-            <img src={ev} alt="REEV" className="w-full h-auto rounded-lg" />
+            <img src={go} alt="REEV" className="w-full h-auto rounded-lg" />
           </div>
           <div className="card-header">
             <span className="card-subtitle text-white text-sm sm:text-base">Electric Hypercar</span>
           </div>
           <p className="text-white font-light text-sm sm:text-lg leading-relaxed">
-            "Globally we are witnessing a technology shift in the automotive
-                    industry from conventional fuel-powered vehicles to alternative
-                    fuel-powered vehicles. With the Indian government's initiative
-                    towards faster adoption of EVs through FAME-II policy, we are
-                    aligned to take this opportunity to develop indigenous solutions
-                    for the Indian market."
+                        Resonance Racing is a Collegiate Motorsports club of AISSMS COE which provides an opportunity for students to pursue their passion for automobile engineering GO KART team is a subsidiary of Resonance Racing which was started in 2014 with aim of competing in National level Go Karting Championships. Resonance Racing Go-kart is highly backed by college administration, and experienced faculty advisers. Team consists of highly technical and nontechnical skilled members who together in unison manufactures state of the art Champion Go-kart Vehicle.
+
           </p>
           <button className="vehicle-cta mt-2 sm:mt-4">
             <span className="text-red-500 font-cursive text-sm sm:text-base">Learn More</span>
@@ -579,12 +571,8 @@ export default function Index() {
                     <span className="card-subtitle">Electric Hypercar</span>
                   </div>
                   <p className="text-lg lg:text-xl leading-relaxed text-white font-light max-w-2xl">
-                    "Globally we are witnessing a technology shift in the automotive
-                    industry from conventional fuel-powered vehicles to alternative
-                    fuel-powered vehicles. With the Indian government's initiative
-                    towards faster adoption of EVs through FAME-II policy, we are
-                    aligned to take this opportunity to develop indigenous solutions
-                    for the Indian market."
+                    Resonance Racing is a Collegiate Motorsports club of AISSMS COE which provides an opportunity for students to pursue their passion for automobile engineering REEV team is a subsidiary of Resonance Racing which was started in 2021 with aim of competing in SAE Competition.
+            Resonance Racing REEV highly backed by college administration, and experienced faculty advisers. Team consists of highly technical skilled members who together in unison manufactures state of the art Champion.<br></br><br></br><br></br>
                   </p>
                   <Link to="/Reev">
                   <button className="vehicle-cta">
@@ -631,12 +619,8 @@ export default function Index() {
                     <span className="card-subtitle">Electric Car</span>
                   </div>
                   <p className="text-lg lg:text-xl leading-relaxed text-white font-light max-w-2xl">
-                    "Globally we are witnessing a technology shift in the automotive
-                    industry from conventional fuel-powered vehicles to alternative
-                    fuel-powered vehicles. With the Indian government's initiative
-                    towards faster adoption of EVs through FAME-II policy, we are
-                    aligned to take this opportunity to develop indigenous solutions
-                    for the Indian market."
+                                Resonance Racing is a Collegiate Motorsports club of AISSMS COE which provides an opportunity for students to pursue their passion for automobile engineering GO KART team is a subsidiary of Resonance Racing which was started in 2014 with aim of competing in National level Go Karting Championships. Resonance Racing Go-kart is highly backed by college administration, and experienced faculty advisers. Team consists of highly technical and nontechnical skilled members who together in unison manufactures state of the art Champion Go-kart Vehicle.
+
                   </p>
                   <Link to="/Gokart">
                   <button className="vehicle-cta">
@@ -1096,3 +1080,4 @@ export default function Index() {
     </main>
   );
 }
+
