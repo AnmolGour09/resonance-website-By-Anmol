@@ -53,7 +53,7 @@ const AnmolCarousel = ({ data }) => {
                   href={member.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute bottom-4 right-4 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
+                  className="absolute bottom-4 right-4 bg-red-600 text-white p-3 rounded-full shadow-lg hover:bg-red-700 transition-colors"
                 >
                   <FaLinkedin size={22} />
                 </a>
