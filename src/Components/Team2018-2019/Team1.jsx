@@ -444,12 +444,3 @@ const Team1 = () => {
       </main>
     );
   };
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-export default Team1;
-=======
-export default Team1;
->>>>>>> 19fe3c038db89f291b32fe9730322fda3d57a952
->>>>>>> 9448fce1fbab1436a6a0614f968c26ccb0013114
-
