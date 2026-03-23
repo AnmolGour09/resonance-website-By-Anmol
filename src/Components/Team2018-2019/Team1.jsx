@@ -256,7 +256,11 @@ const team20232024 = [
     position: "Powertrain",
     image: v33,
     linkedin: "https://www.linkedin.com/in/sneha-patil",
+<<<<<<< HEAD
     review: "Joining Resonance Racing’s Go-kart & Reev team as a powertrain engineer was a hands-on adventure, taking me from learning to designing, simulating, fabricating, and rigorously testing all our “khurafati” ideas."
+=======
+    review: "Joining Resonance Racing's Go-kart & Reev team as a powertrain engineer was a hands-on adventure, taking me from learning to designing, simulating, fabricating, and rigorously testing all our “khurafati” ideas."
+>>>>>>> master
   },
   
   {
@@ -332,7 +336,11 @@ const team20222023 = [
     position: "Powertrain",
     image: v28,
     linkedin: "https://www.linkedin.com/in/sneha-patil",
+<<<<<<< HEAD
     review: "Joining Resonance Racing’s Go-kart & Reev team as a powertrain engineer was a hands-on adventure, taking me from learning to designing, simulating, fabricating, and rigorously testing all our “khurafati” ideas."
+=======
+    review: "Joining Resonance Racing's Go-kart & Reev team as a powertrain engineer was a hands-on adventure, taking me from learning to designing, simulating, fabricating, and rigorously testing all our “khurafati” ideas."
+>>>>>>> master
   },
   {
     name: "Shreeyash Chandgude",
@@ -358,7 +366,11 @@ const team20222023 = [
   {
     name: "Gaurang Gujarthi",
     position: "Brakes",
+<<<<<<< HEAD
     image: 34,
+=======
+    image: v34,
+>>>>>>> master
     linkedin: "https://www.linkedin.com/in/sneha-patil",
     review: "Being part of the AISSMS Motorsport Club shaped my journey as an engineer. Working on Go-Karts and SAE REEV taught me teamwork, leadership, and real-world problem-solving."
   },
@@ -368,6 +380,7 @@ const team20222023 = [
 
 const Team1 = () => {
   const [animate, setAnimate] = useState(false);
+<<<<<<< HEAD
     const sectionRef = useRef(null);
   
     useEffect(() => {
@@ -444,3 +457,83 @@ const Team1 = () => {
       </main>
     );
   };
+=======
+  const sectionRef = useRef(null);
+  
+  useEffect(() => {
+    setAnimate(true);
+  }, []);
+  
+  return (
+    <main className="w-full bg-[#101010] min-h-screen pt-20 lg:pt-24" style={{ position: 'relative', zIndex: 1 }}>
+      {/* container  */}
+      <section className="relative z-10">
+        <div className=" mx-auto px-4 pt-[20%] sm:pt-[15%] md:pt-[10%] pb-[12%] md:pb-[5%]">
+          <div className="text-center relative">
+            <div className="Jointe">
+              <h2 className={`learn-mo-line ${animate ? "active" : ""}`}>
+                <span className="section-heading">Team Member</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr className="bg-black border-b border-red-500" />
+
+      {/* container 1 */}
+      <div className="mt-10 mb-16">
+        <h2 className="section-heading"></h2>
+        <div>
+          <div className="w-full flex justify-center">
+             <h2 className={`text-center mt-6 mb Ascent 4 mb-4 learn-mo-line ${animate ? "active" : ""}`}>
+              <span className="font-bold text-xl sm:text-2xl md:text-3xl block ">
+                Team 2025-2026
+              </span>
+            </h2>
+                  
+            
+          </div>
+          <div>
+            <AnmolCarousel data={team20252026} />
+          </div>
+          
+        </div>
+        {/* container 2 */}
+        <div>
+          <div className="w-full flex justify-center">
+            <h2 className={`text-center mt-6 mb-4 learn-mo-line ${animate ? "active" : ""}`}>
+              <span className="font-bold text-xl sm:text-2xl md:text Ascent 3xl block ">
+                Team 2023-2024
+              </span>
+            </h2>
+            
+          </div>
+          <div>
+            <AnmolCarousel data={team20232024} />
+          </div>
+        </div>
+        {/* container 3*/}
+        <div>
+          <div className="w-full flex justify-center">
+            <h2 className={`text-center mt-6 mb-4 learn-mo-line ${animate ? "active" : ""}`}>
+              <span Ascent className="font-bold text-xl sm:text-2xl md:text-3xl block ">
+                Team 2022-2023
+              </span>
+            </h2>
+            
+          </div>
+          <div>
+            <AnmolCarousel data={team20222023} />
+          </div>
+          
+        </div>
+        
+      </div>
+      <Footer />
+    </main>
+  );
+};
+
+export default Team1;
+>>>>>>> master

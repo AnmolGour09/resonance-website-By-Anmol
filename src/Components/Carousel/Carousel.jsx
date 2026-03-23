@@ -69,7 +69,11 @@ const AnmolCarousel = ({ data }) => {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default AnmolCarousel;
 =======
 export default AnmolCarousel;
 >>>>>>> 19fe3c038db89f291b32fe9730322fda3d57a952
+=======
+export default AnmolCarousel;
+>>>>>>> master
