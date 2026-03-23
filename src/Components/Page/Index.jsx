@@ -1,40 +1,40 @@
-  import React, { useEffect, useRef, useState, Fragment } from "react";
-  import { GiStumpRegrowth } from "react-icons/gi";
-  import { BsFillPeopleFill, BsFillLaptopFill } from "react-icons/bs";
-  import { TbBulbFilled } from "react-icons/tb";
-  import { FaTools, FaHandsHelping } from "react-icons/fa";
-  import { motion } from "framer-motion";
-  import TailwindSlideshow from "./Slideshow";
-  import Footer from "../../Components/Footer/Footer.jsx";
-  import go from "../../assets/Annn.jpg";
-  import ev from "../../assets/evev.jpg";
-  import videoFile from "../../assets/video1.mp4";
+import React, { useEffect, useRef, useState, Fragment } from "react";
+import { GiStumpRegrowth } from "react-icons/gi";
+import { BsFillPeopleFill, BsFillLaptopFill } from "react-icons/bs";
+import { TbBulbFilled } from "react-icons/tb";
+import { FaTools, FaHandsHelping } from "react-icons/fa";
+import { motion } from "framer-motion";
+import TailwindSlideshow from "./Slideshow";
+import Footer from "../../Components/Footer/Footer.jsx";
+import go from "../../assets/Annn.jpg";
+import ev from "../../assets/evev.jpg";
+import videoFile from "../../assets/video1.mp4";
 
-  // Assets
+// Assets
 
-  import slideImg1 from "../../assets/Sponser1.png";
-  import slideImg2 from "../../assets/Sponser2.png";
-  import slideImg3 from "../../assets/Sponser3.png";
-  import slideImg4 from "../../assets/Sponser4.png";
-  import slideImg5 from "../../assets/Sponser5.png";
-  import slideImg6 from "../../assets/Sponser6.jpg";
+import slideImg1 from "../../assets/Sponser1.png";
+import slideImg2 from "../../assets/Sponser2.png";
+import slideImg3 from "../../assets/Sponser3.png";
+import slideImg4 from "../../assets/Sponser4.png";
+import slideImg5 from "../../assets/Sponser5.png";
+import slideImg6 from "../../assets/Sponser6.jpg";
 
 
-  // Splide imports
-  import { Splide, SplideSlide } from "@splidejs/react-splide";
-  import "@splidejs/react-splide/css";
-  import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
+// Splide imports
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
+import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 
-  // Swiper imports
-  import { Swiper, SwiperSlide } from "swiper/react";
-  import "swiper/css";
-  import "swiper/css/pagination";
-  import "swiper/css/navigation";
-  import { Pagination, Navigation, Autoplay } from "swiper/modules";
-  import { Link } from "react-router-dom";
+// Swiper imports
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Link } from "react-router-dom";
 
-  export default function Index() {
-    const [showReviewModal, setShowReviewModal] = useState(false);
+export default function Index() {
+  const [showReviewModal, setShowReviewModal] = useState(false);
   const [selectedReview, setSelectedReview] = useState(null);
 
   const reviewsData = [
@@ -63,358 +63,378 @@
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e"
     }
   ];
-    const heroRef = useRef(null);
-    const aboutRef = useRef(null);
-    const whyJoinRef = useRef(null);
-    const fleetRef = useRef(null);
-    const reviewsRef = useRef(null);
-    const sponsorsRef = useRef(null);
-    const reeRef = useRef(null);
-    const saeRef = useRef(null);
-    const taeRef = useRef(null);
+  const heroRef = useRef(null);
+  const aboutRef = useRef(null);
+  const whyJoinRef = useRef(null);
+  const fleetRef = useRef(null);
+  const reviewsRef = useRef(null);
+  const sponsorsRef = useRef(null);
+  const reeRef = useRef(null);
+  const saeRef = useRef(null);
+  const taeRef = useRef(null);
 
 
-    const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-    const fadeInUp = {
-      hidden: { opacity: 0, y: 50 },
-      visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.8, ease: "easeOut" }
-      },
-      hovered: { scale: 1 }
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    },
+    hovered: { scale: 1 }
+  };
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    useEffect(() => {
-      const checkMobile = () => {
-        setIsMobile(window.innerWidth <= 768);
-      };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
 
-      checkMobile();
-      window.addEventListener('resize', checkMobile);
-
-      return () => {
-        window.removeEventListener('resize', checkMobile);
-      };
-    }, []);
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
 
-    return (
-      <main className={`w-full bg-[#101010] ${isMobile ? 'min-h-screen' : 'h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth'}`}>
-        {/* Hero Section */}
-        {/* Hero Section */}
-  <motion.section
-    ref={heroRef}
-    className={`relative w-full flex items-center justify-center bg-black overflow-hidden ${isMobile ? 'min-h-[80vh]' : 'h-screen snap-start'}`}
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 1 }}
-  >
-    <video
-      src={videoFile}
-      autoPlay
-      muted
-      loop
-      playsInline
-      className="absolute inset-0 w-full h-full object-cover"
-    />
-
-    {/* Overlay for readability */}
-    <div className="absolute inset-0 bg-black/40 z-0"></div>
-
-    <div className="relative z-10 text-center text-white px-4">
-      <motion.h1
-        className="text-4xl md:text-8xl font-bold italic text-red-600 font-mono mb-4"
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        Resonance <span className="text-white">Racing</span>
-      </motion.h1>
-      
-      <motion.h2 
-        className="text-lg md:text-3xl font-mono mb-8"
+  return (
+    <main className={`w-full bg-[#101010] ${isMobile ? 'min-h-screen' : 'h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth'}`}>
+      {/* Hero Section */}
+      {/* Hero Section */}
+      <motion.section
+        ref={heroRef}
+        className={`relative w-full flex items-center justify-center bg-black overflow-hidden ${isMobile ? 'min-h-[80vh]' : 'h-screen snap-start'}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
+        transition={{ duration: 1 }}
       >
-        Transforming Will Power into Horsepower
-      </motion.h2>
-
-      {!isMobile && (
-        <motion.a
-          href="#about"
-          className="text-red-600 font-mono text-lg hover:text-white transition-all duration-300 hover:scale-105"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          Scroll Down
-        </motion.a>
-      )}
-    </div>
-  </motion.section>
-        {/* Spacer - removed to allow proper center snapping */}
-        <div id="about" className={`${isMobile ? 'h-8' : 'h-0'}`}></div>
-
-        {/* About Section */}
-        {isMobile ? (
-    <section
-      ref={aboutRef}
-      data-section="about"
-      className="w-full mt-24 bg-[#101010] flex flex-col items-center justify-center py-8 px-4 gap-6"
-    >
-      {/* Image */}
-      <div className="relative overflow-hidden rounded-2xl shadow-2xl w-full max-w-sm">
-        <img
-          alt="About REEV"
-          className="w-full h-52 rounded-2xl object-cover"
-          loading="lazy"
-          src="/banner 2.png"
+        <video
+          src={videoFile}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
         />
-      </div>
 
-      {/* Text */}
-      <div className="text-center px-2">
-        <h2 className="text-2xl font-bold text-white font-mono mb-4">
-          About Us
-        </h2>
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-black/40 z-0"></div>
 
-        <p className="text-gray-300 text-sm leading-relaxed">
-          Globally we are witnessing a technology shift in the automotive
-          industry from conventional fuel-powered vehicles to alternative
-          fuel-powered vehicles. With the Indian government's initiative
-          towards faster adoption of EVs through FAME-II policy, we are
-          aligned to take this opportunity to develop indigenous solutions
-          for the Indian market.
-        </p>
-      </div>
-    </section>
-
-        ) : (
-          <motion.section
-            ref={aboutRef}
-            data-section="about"
-            className="w-full bg-[#101010] flex flex-col items-center justify-center min-h-screen lg:flex-row gap-6 lg:gap-10 px-4 sm:px-6 lg:px-20 py-12 lg:py-20 snap-start"
-            style={{ scrollSnapAlign: 'start' }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            whileHover="hovered"
+        <div className="relative z-10 text-center text-white px-4">
+          <motion.h1
+            className="text-4xl md:text-8xl font-bold italic text-red-600 font-mono mb-4"
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
           >
-            {/* Image Section */}
-            <motion.div
-              className="relative overflow-hidden rounded-2xl shadow-2xl group cursor-pointer flex-1"
-              variants={fadeInUp}
-              whileHover={{
-                scale: 1.02,
-                y: -4,
-                transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-black/30 z-10 group-hover:from-black/40 transition-all duration-500"></div>
-              <img
-                alt="About REEV"
-                className="w-full h-80 lg:h-96 object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
-                src="/banner 2.png"
-              />
-            </motion.div>
+            Resonance <span className="text-white">Racing</span>
+          </motion.h1>
 
-            {/* About Section */}
-            <motion.div
-              className="flex-1 lg:text-left text-center"
-              variants={fadeInUp}
-            >
-              <h2 className="font-black text-white mb-6 tracking-wide font-mono uppercase relative inline-block text-5xl">
-                About Us
-                <motion.div
-                  className="absolute -bottom-1 left-0 h-[2px] w-full"
-                  style={{
-                    background: 'linear-gradient(to right, transparent, red, transparent)'
-                  }}
-                  variants={{
-                    visible: { scaleX: 0 },
-                    hovered: { scaleX: 1 },
-                  }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                />
-              </h2>
-              <motion.p
-                className="leading-relaxed text-gray-300 font-light text-lg lg:text-xl max-w-2xl"
-                variants={fadeInUp}
-              >
-                "Globally we are witnessing a technology shift in the automotive
-                industry from conventional fuel-powered vehicles to alternative
-                fuel-powered vehicles. With the Indian government's initiative
-                towards faster adoption of EVs through FAME-II policy, we are
-                aligned to take this opportunity to develop indigenous solutions
-                for the Indian market."
-              </motion.p>
-            </motion.div>
-          </motion.section>
-        )}
-
-        {/* Why Join Us Section */}
-        {isMobile ? (
-          <section
-            ref={whyJoinRef}
-            data-section="whyJoin"
-            className="w-full bg-[#101010] mt-24 flex flex-col justify-start py-8"
+          <motion.h2
+            className="text-lg md:text-3xl font-mono mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
           >
-            <div className="text-center group cursor-pointer mb-6">
-              <h2 className="font-black text-white mb-4 tracking-wide font-mono uppercase relative inline-block text-2xl mt-4">
-                Why Join Us?
-                <div
-                  className="absolute -bottom-1 left-0 h-[2px] w-full"
-                  style={{
-                    background: 'linear-gradient(to right, transparent, red, transparent)'
-                  }}
-                />
-              </h2>
-            </div>
+            Transforming Will Power into Horsepower
+          </motion.h2>
 
-            <div className="grid gap-4 px-4">
-              {[
-                {
-                  title: "Innovation",
-                  description: "Work on cutting-edge electric vehicle technology and sustainable transportation solutions.",
-                  symbol: <TbBulbFilled className="size-8 fill-black" />
-                },
-                {
-                  title: "Skill Development",
-                  description: "Develop your skills in automotive technology, motorsports, and sustainable engineering.",
-                  symbol: <FaTools className="size-8 fill-black" />
-                },
-                {
-                  title: "Hands-On Experience",
-                  description: "Get hands-on experience in automotive technology, motorsports, and sustainable engineering.",
-                  symbol: <FaHandsHelping className="size-8 fill-black" />
-                },
-                {
-                  title: "Learn New Softwares",
-                  description: "Learn new softwares and tools to enhance your skills.",
-                  symbol: <BsFillLaptopFill className="size-8 fill-black" />
-                },
-                {
-                  title: "Collaboration",
-                  description: "Join a passionate team of engineers and developers working towards a greener future.",
-                  symbol: <BsFillPeopleFill className="size-8 fill-black" />
-                },
-                {
-                  title: "Growth",
-                  description: "Develop your skills in automotive technology, motorsports, and sustainable engineering.",
-                  symbol: <GiStumpRegrowth className="size-8 fill-black" />
-                }
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-white/5 backdrop-blur-sm col-span-1 rounded-lg border border-red-600/20 group cursor-pointer grid h-auto p-4 mb-3 min-h-[14rem]"
-                >
-                  <div className="justify-self-center grid bg-red-500 items-center justify-items-center rounded-full w-16 h-16 mt-4">
-                    {item.symbol}
-                  </div>
-                  <h4 className="font-bold text-red-600 font-mono justify-self-center text-lg mb-3 mt-3">{item.title}</h4>
-                  <p className="text-gray-300 text-sm leading-relaxed">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        ) : (
-          <motion.section
-            ref={whyJoinRef}
-            data-section="whyJoin"
-            className="w-full bg-[#101010] flex flex-col justify-start min-h-screen pt-24 pb-20 snap-start"
-            style={{ scrollSnapAlign: 'start' }}
+          {!isMobile && (
+            <motion.a
+              href="#about"
+              className="text-red-600 font-mono text-lg hover:text-white transition-all duration-300 hover:scale-105"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              Scroll Down
+            </motion.a>
+          )}
+        </div>
+      </motion.section>
+      {/* Spacer - removed to allow proper center snapping */}
+      <div id="about" className={`${isMobile ? 'h-8' : 'h-0'}`}></div>
+
+      {/* About Section */}
+      {isMobile ? (
+        <section
+          ref={aboutRef}
+          data-section="about"
+          className="w-full mt-24 bg-[#101010] flex flex-col items-center justify-center py-8 px-4 gap-6"
+        >
+          {/* Image */}
+          <div className="relative overflow-hidden rounded-2xl shadow-2xl w-full max-w-sm">
+            <img
+              alt="About REEV"
+              className="w-full h-52 rounded-2xl object-cover"
+              loading="lazy"
+              src="/banner 2.png"
+            />
+          </div>
+
+          {/* Text */}
+          <div className="text-center px-2">
+            <h2 className="text-2xl font-bold text-white font-mono mb-4">
+              About Us
+            </h2>
+
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Globally we are witnessing a technology shift in the automotive
+              industry from conventional fuel-powered vehicles to alternative
+              fuel-powered vehicles. With the Indian government's initiative
+              towards faster adoption of EVs through FAME-II policy, we are
+              aligned to take this opportunity to develop indigenous solutions
+              for the Indian market.
+            </p>
+          </div>
+        </section>
+
+      ) : (
+        <motion.section
+          ref={aboutRef}
+          data-section="about"
+          className="w-full bg-[#101010] flex flex-col items-center justify-center min-h-screen lg:flex-row gap-6 lg:gap-10 px-4 sm:px-6 lg:px-20 py-12 lg:py-20 snap-start"
+          style={{ scrollSnapAlign: 'start' }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          whileHover="hovered"
+        >
+          {/* Image Section */}
+          <motion.div
+            className="relative overflow-hidden rounded-2xl shadow-2xl group cursor-pointer flex-1"
             variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            whileHover="hovered"
-            viewport={{ once: true, amount: 0.3 }}
+            whileHover={{
+              scale: 1.02,
+              y: -4,
+              transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+            }}
           >
-            <motion.div
-              className="text-center group cursor-pointer mb-16"
-              variants={fadeInUp}
-            >
-              <h2 className="font-black text-white mb-4 tracking-wide font-mono uppercase relative inline-block text-5xl mt-24">
-                Why Join Us?
-                <motion.div
-                  className="absolute -bottom-1 left-0 h-[2px] w-full"
-                  style={{
-                    background: 'linear-gradient(to right, transparent, red, transparent)'
-                  }}
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  variants={{
-                    visible: { scaleX: 0 },
-                    hovered: { scaleX: 1 },
-                  }}
-                  transition={{
-                    duration: 0.6,
-                    ease: "easeInOut"
-                  }}
-                />
-              </h2>
-            </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-black/30 z-10 group-hover:from-black/40 transition-all duration-500"></div>
+            <img
+              alt="About REEV"
+              className="w-full h-80 lg:h-96 object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+              src="/banner 2.png"
+            />
+          </motion.div>
 
-            <motion.div
-              className="grid gap-4 px-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 lg:gap-[3rem] sm:px-6 lg:px-[17rem]"
+          {/* About Section */}
+          <motion.div
+            className="flex-1 lg:text-left text-center"
+            variants={fadeInUp}
+          >
+            <h2 className="font-black text-white mb-6 tracking-wide font-mono uppercase relative inline-block text-5xl">
+              About Us
+              <motion.div
+                className="absolute -bottom-1 left-0 h-[2px] w-full"
+                style={{
+                  background: 'linear-gradient(to right, transparent, red, transparent)'
+                }}
+                variants={{
+                  visible: { scaleX: 0 },
+                  hovered: { scaleX: 1 },
+                }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+              />
+            </h2>
+            <motion.p
+              className="leading-relaxed text-gray-300 font-light text-lg lg:text-xl max-w-2xl"
               variants={fadeInUp}
             >
-              {[
-                {
-                  title: "Innovation",
-                  description: "Work on cutting-edge electric vehicle technology and sustainable transportation solutions.",
-                  symbol: <TbBulbFilled className="size-10 fill-black" />
-                },
-                {
-                  title: "Skill Development",
-                  description: "Develop your skills in automotive technology, motorsports, and sustainable engineering.",
-                  symbol: <FaTools className="size-10 fill-black" />
-                },
-                {
-                  title: "Hands-On Experience",
-                  description: "Get hands-on experience in automotive technology, motorsports, and sustainable engineering.",
-                  symbol: <FaHandsHelping className="size-10 fill-black" />
-                },
-                {
-                  title: "Learn New Softwares",
-                  description: "Learn new softwares and tools to enhance your skills.",
-                  symbol: <BsFillLaptopFill className="size-10 fill-black" />
-                },
-                {
-                  title: "Collaboration",
-                  description: "Join a passionate team of engineers and developers working towards a greener future.",
-                  symbol: <BsFillPeopleFill className="size-10 fill-black" />
-                },
-                {
-                  title: "Growth",
-                  description: "Develop your skills in automotive technology, motorsports, and sustainable engineering.",
-                  symbol: <GiStumpRegrowth className="size-10 fill-black" />
-                }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-white/5 backdrop-blur-sm col-span-1 rounded-lg border border-red-600/20 group cursor-pointer grid h-auto p-4 sm:p-6 mb-6 lg:mb-[3rem] min-h-[18rem] sm:h-[20rem] md:h-[25rem]"
-                  whileHover="hover-card"
-                  initial="rest"
-                  animate="rest"
+              "Globally we are witnessing a technology shift in the automotive
+              industry from conventional fuel-powered vehicles to alternative
+              fuel-powered vehicles. With the Indian government's initiative
+              towards faster adoption of EVs through FAME-II policy, we are
+              aligned to take this opportunity to develop indigenous solutions
+              for the Indian market."
+            </motion.p>
+          </motion.div>
+        </motion.section>
+      )}
+
+      {/* Why Join Us Section */}
+      {isMobile ? (
+        <section
+          ref={whyJoinRef}
+          data-section="whyJoin"
+          className="w-full bg-[#101010] mt-24 flex flex-col justify-start py-8"
+        >
+          <div className="text-center group cursor-pointer mb-6">
+            <h2 className="font-black text-white mb-4 tracking-wide font-mono uppercase relative inline-block text-2xl mt-4">
+              Why Join Us?
+              <div
+                className="absolute -bottom-1 left-0 h-[2px] w-full"
+                style={{
+                  background: 'linear-gradient(to right, transparent, red, transparent)'
+                }}
+              />
+            </h2>
+          </div>
+
+          <div className="grid gap-4 px-4">
+            {[
+              {
+                title: "Innovation",
+                description: "Work on cutting-edge electric vehicle technology and sustainable transportation solutions.",
+                symbol: <TbBulbFilled className="size-8 fill-black" />
+              },
+              {
+                title: "Skill Development",
+                description: "Develop your skills in automotive technology, motorsports, and sustainable engineering.",
+                symbol: <FaTools className="size-8 fill-black" />
+              },
+              {
+                title: "Hands-On Experience",
+                description: "Get hands-on experience in automotive technology, motorsports, and sustainable engineering.",
+                symbol: <FaHandsHelping className="size-8 fill-black" />
+              },
+              {
+                title: "Learn New Softwares",
+                description: "Learn new softwares and tools to enhance your skills.",
+                symbol: <BsFillLaptopFill className="size-8 fill-black" />
+              },
+              {
+                title: "Collaboration",
+                description: "Join a passionate team of engineers and developers working towards a greener future.",
+                symbol: <BsFillPeopleFill className="size-8 fill-black" />
+              },
+              {
+                title: "Growth",
+                description: "Develop your skills in automotive technology, motorsports, and sustainable engineering.",
+                symbol: <GiStumpRegrowth className="size-8 fill-black" />
+              }
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-white/5 backdrop-blur-sm col-span-1 rounded-lg border border-red-600/20 group cursor-pointer grid h-auto p-4 mb-3 min-h-[14rem]"
+              >
+                <div className="justify-self-center grid bg-red-500 items-center justify-items-center rounded-full w-16 h-16 mt-4">
+                  {item.symbol}
+                </div>
+                <h4 className="font-bold text-red-600 font-mono justify-self-center text-lg mb-3 mt-3">{item.title}</h4>
+                <p className="text-gray-300 text-sm leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <motion.section
+          ref={whyJoinRef}
+          data-section="whyJoin"
+          className="w-full bg-[#101010] flex flex-col justify-start min-h-screen pt-24 pb-20 snap-start"
+          style={{ scrollSnapAlign: 'start' }}
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          whileHover="hovered"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div
+            className="text-center group cursor-pointer mb-16"
+            variants={fadeInUp}
+          >
+            <h2 className="font-black text-white mb-4 tracking-wide font-mono uppercase relative inline-block text-5xl mt-24">
+              Why Join Us?
+              <motion.div
+                className="absolute -bottom-1 left-0 h-[2px] w-full"
+                style={{
+                  background: 'linear-gradient(to right, transparent, red, transparent)'
+                }}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                variants={{
+                  visible: { scaleX: 0 },
+                  hovered: { scaleX: 1 },
+                }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeInOut"
+                }}
+              />
+            </h2>
+          </motion.div>
+
+          <motion.div
+            className="grid gap-4 px-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 lg:gap-[3rem] sm:px-6 lg:px-[17rem]"
+            variants={fadeInUp}
+          >
+            {[
+              {
+                title: "Innovation",
+                description: "Work on cutting-edge electric vehicle technology and sustainable transportation solutions.",
+                symbol: <TbBulbFilled className="size-10 fill-black" />
+              },
+              {
+                title: "Skill Development",
+                description: "Develop your skills in automotive technology, motorsports, and sustainable engineering.",
+                symbol: <FaTools className="size-10 fill-black" />
+              },
+              {
+                title: "Hands-On Experience",
+                description: "Get hands-on experience in automotive technology, motorsports, and sustainable engineering.",
+                symbol: <FaHandsHelping className="size-10 fill-black" />
+              },
+              {
+                title: "Learn New Softwares",
+                description: "Learn new softwares and tools to enhance your skills.",
+                symbol: <BsFillLaptopFill className="size-10 fill-black" />
+              },
+              {
+                title: "Collaboration",
+                description: "Join a passionate team of engineers and developers working towards a greener future.",
+                symbol: <BsFillPeopleFill className="size-10 fill-black" />
+              },
+              {
+                title: "Growth",
+                description: "Develop your skills in automotive technology, motorsports, and sustainable engineering.",
+                symbol: <GiStumpRegrowth className="size-10 fill-black" />
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="bg-white/5 backdrop-blur-sm col-span-1 rounded-lg border border-red-600/20 group cursor-pointer grid h-auto p-4 sm:p-6 mb-6 lg:mb-[3rem] min-h-[18rem] sm:h-[20rem] md:h-[25rem]"
+                whileHover="hover-card"
+                initial="rest"
+                animate="rest"
+                variants={{
+                  "hover-card": {
+                    scale: 1.03,
+                    y: -8,
+                    boxShadow: "0 20px 40px rgba(220, 38, 38, 0.15)",
+                    borderColor: "rgba(220, 38, 38, 0.4)",
+                    transition: {
+                      duration: 0.4,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  },
+                  rest: {
+                    scale: 1,
+                    y: 0,
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                    borderColor: "rgba(220, 38, 38, 0.2)",
+                    transition: {
+                      duration: 0.4,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }
+                  }
+                }}
+              >
+                <motion.div className="justify-self-center grid bg-red-500 items-center justify-items-center rounded-full w-20 h-20 mt-[1.5rem]"
                   variants={{
-                    "hover-card": {
-                      scale: 1.03,
-                      y: -8,
-                      boxShadow: "0 20px 40px rgba(220, 38, 38, 0.15)",
-                      borderColor: "rgba(220, 38, 38, 0.4)",
+                    rest: {
+                      scale: 1,
+                      rotate: 0,
                       transition: {
                         duration: 0.4,
                         ease: [0.25, 0.46, 0.45, 0.94]
                       }
                     },
-                    rest: {
-                      scale: 1,
-                      y: 0,
-                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                      borderColor: "rgba(220, 38, 38, 0.2)",
+                    "hover-card": {
+                      scale: 1.1,
+                      rotate: 5,
                       transition: {
                         duration: 0.4,
                         ease: [0.25, 0.46, 0.45, 0.94]
@@ -422,553 +442,113 @@
                     }
                   }}
                 >
-                  <motion.div className="justify-self-center grid bg-red-500 items-center justify-items-center rounded-full w-20 h-20 mt-[1.5rem]"
-                    variants={{
-                      rest: {
-                        scale: 1,
-                        rotate: 0,
-                        transition: {
-                          duration: 0.4,
-                          ease: [0.25, 0.46, 0.45, 0.94]
-                        }
-                      },
-                      "hover-card": {
-                        scale: 1.1,
-                        rotate: 5,
-                        transition: {
-                          duration: 0.4,
-                          ease: [0.25, 0.46, 0.45, 0.94]
-                        }
-                      }
-                    }}
-                  >
-                    {React.cloneElement(item.symbol, {
-                      className: "size-10 fill-black"
-                    })}
-                  </motion.div>
-                  <h4 className="font-bold text-red-600 font-mono justify-self-center text-2xl mb-6 mt-[1rem]">{item.title}</h4>
-                  <p className="text-gray-300">{item.description}</p>
+                  {React.cloneElement(item.symbol, {
+                    className: "size-10 fill-black"
+                  })}
                 </motion.div>
-              ))}
-            </motion.div>
-          </motion.section>
-        )}
-
-        {/* Fleet Showcase Section */}
-        {isMobile ? (
-            <section
-    ref={fleetRef}
-    data-section="fleet"
-    className="w-full bg-[#101010] flex flex-col justify-start pt-8 pb-20 sm:pt-16 sm:pb-28 lg:min-h-screen snap-start"
-    style={{ scrollSnapAlign: 'start' }}
-  >
-    <div className="w-full">
-      {/* Section Header */}
-      <div className="text-center mb-6 sm:mb-12">
-        <h2 className="font-black text-white tracking-wide font-mono uppercase relative inline-block text-2xl sm:text-5xl">
-          OUR FLEET
-          <div
-            className="absolute -bottom-1 left-0 h-[2px] w-full"
-            style={{ background: 'linear-gradient(to right, transparent, red, transparent)' }}
-          />
-        </h2>
-      </div>
-
-      {/* Fleet Grid */}
-      <div className="max-w-7xl pt-8 mx-auto w-[90%] xl:w-[80%] grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {/* Vehicle Card Example */}
-        <div className="vehicle-card">
-          <div className="header">
-            <h3 className="text-red-500 font-cursive text-xl sm:text-2xl">
-              REEV Racer
-            </h3>
-          </div>
-          <div className="card-content">
-            <div className="card-image">
-              <img src={ev} alt="REEV" className="w-full h-auto rounded-lg" />
-            </div>
-            <div className="card-header">
-              <span className="card-subtitle text-white text-sm sm:text-base">Electric Hypercar</span>
-            </div>
-            <p className="text-white font-light text-sm sm:text-lg leading-relaxed">
-              Resonance Racing is a Collegiate Motorsports club of AISSMS COE which provides an opportunity for students to pursue their passion for automobile engineering REEV team is a subsidiary of Resonance Racing which was started in 2021 with aim of competing in SAE Competition.
-              Resonance Racing REEV highly backed by college administration, and experienced faculty advisers. Team consists of highly technical skilled members who together in unison manufactures state of the art Champion.
-            </p>
-            <button className="vehicle-cta mt-2 sm:mt-4">
-              <span className="text-red-500 font-cursive text-sm sm:text-base">Learn More</span>
-              <i className="fas fa-arrow-right ml-2"></i>
-            </button>
-          </div>
-        </div>
-
-        <div className="vehicle-card">
-          <div className="header">
-            <h3 className="text-red-500 font-cursive text-xl sm:text-2xl">
-              REEV Racer
-            </h3>
-          </div>
-          <div className="card-content">
-            <div className="card-image">
-              <img src={go} alt="REEV" className="w-full h-auto rounded-lg" />
-            </div>
-            <div className="card-header">
-              <span className="card-subtitle text-white text-sm sm:text-base">Electric Hypercar</span>
-            </div>
-            <p className="text-white font-light text-sm sm:text-lg leading-relaxed">
-                          Resonance Racing is a Collegiate Motorsports club of AISSMS COE which provides an opportunity for students to pursue their passion for automobile engineering GO KART team is a subsidiary of Resonance Racing which was started in 2014 with aim of competing in National level Go Karting Championships. Resonance Racing Go-kart is highly backed by college administration, and experienced faculty advisers. Team consists of highly technical and nontechnical skilled members who together in unison manufactures state of the art Champion Go-kart Vehicle.
-
-            </p>
-            <button className="vehicle-cta mt-2 sm:mt-4">
-              <span className="text-red-500 font-cursive text-sm sm:text-base">Learn More</span>
-              <i className="fas fa-arrow-right ml-2"></i>
-            </button>
-          </div>
-        </div>
-
-        {/* Repeat Vehicle Cards */}
-      </div>
-    </div>
-  </section>
-        ) : (
-          <motion.section
-            ref={fleetRef}
-            data-section="fleet"
-            className="w-full bg-[#101010] flex flex-col justify-start min-h-screen pt-36 pb-20 snap-start"
-            style={{ scrollSnapAlign: 'start' }}
-            initial="hidden"
-            animate={undefined}
-            whileHover="hovered"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <div className="w-full">
-              {/* Section Header */}
-              <motion.div
-                className="text-center group cursor-pointer mb-16"
-                variants={fadeInUp}
-              >
-                <h2 className="font-black text-white mb-4 tracking-wide font-mono uppercase relative inline-block text-5xl">
-                  OUR FLEET
-                  <motion.div
-                    className="absolute -bottom-1 left-0 h-[2px] w-full"
-                    style={{
-                      background: 'linear-gradient(to right, transparent, red, transparent)'
-                    }}
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    whileHover={{ scaleX: 1 }}
-                    variants={{
-                      visible: { scaleX: 0 },
-                      hovered: { scaleX: 1 },
-                    }}
-                    transition={{
-                      duration: 0.6,
-                      ease: "easeInOut"
-                    }}
-                  />
-                </h2>
+                <h4 className="font-bold text-red-600 font-mono justify-self-center text-2xl mb-6 mt-[1rem]">{item.title}</h4>
+                <p className="text-gray-300">{item.description}</p>
               </motion.div>
-            </div>
-            
-            {/* Fleet Grid */}
-            <div className="max-w-7xl mx-auto w-[90%] xl:w-[80%]">
-              <div className="vehicles-grid">
-                {/* Vehicle Card 1 */}
-                <div className="vehicle-card reev-card active">
-                  <div className="header">
-                    <h3>
-                      <span
-                        style={{
-                          fontFamily: "cursive",
-                          color: "red",
-                        }}
-                      >
-                        About{" "}
-                      </span>
-                      Reev
-                    </h3>
-                  </div>
-                  <div className="card-content">
-                    <div className="card-image">
-                      <img
-                        src={ev}
-                        alt="REEV"
-                      />
-                    </div>
-                    <div className="card-header">
-                      <br></br>
-                      <span className="card-subtitle">Electric Hypercar</span>
-                    </div>
-                    <p className="text-lg lg:text-xl leading-relaxed text-white font-light max-w-2xl">
-                      Resonance Racing is a Collegiate Motorsports club of AISSMS COE which provides an opportunity for students to pursue their passion for automobile engineering REEV team is a subsidiary of Resonance Racing which was started in 2021 with aim of competing in SAE Competition.
-              Resonance Racing REEV highly backed by college administration, and experienced faculty advisers. Team consists of highly technical skilled members who together in unison manufactures state of the art Champion.<br></br><br></br><br></br>
-                    </p>
-                    <Link to="/Reev">
-                    <button className="vehicle-cta">
-                      <span
-                        className="about-reev-heading"
-                        style={{
-                          fontFamily: "cursive",
-                          color: "red",
-                          fontSize: "19px",
-                        }}
-                      >
-                        Learn More{" "}
-                      </span>{" "}
-                      <i className="fas fa-arrow-right"></i>
-                    </button>
-                    </Link>
-                  </div>
-                </div>
+            ))}
+          </motion.div>
+        </motion.section>
+      )}
 
-                {/* Vehicle Card 2 */}
-                <div className="vehicle-card reev-card active">
-                  <div className="header">
-                    <h3>
-                      <span
-                        style={{
-                          fontFamily: "cursive",
-                          color: "red",
-                        }}
-                      >
-                        About{" "}
-                      </span>{" "}
-                      GoKart
-                    </h3>
-                  </div>
-                  <div className="card-content">
-                    <div className="card-image">
-                      <img
-                        src={go}
-                        alt="GoKart"
-                      />
-                    </div>
-                    <div className="card-header">
-                      <br></br>
-                      <span className="card-subtitle">Electric Car</span>
-                    </div>
-                    <p className="text-lg lg:text-xl leading-relaxed text-white font-light max-w-2xl">
-                                  Resonance Racing is a Collegiate Motorsports club of AISSMS COE which provides an opportunity for students to pursue their passion for automobile engineering GO KART team is a subsidiary of Resonance Racing which was started in 2014 with aim of competing in National level Go Karting Championships. Resonance Racing Go-kart is highly backed by college administration, and experienced faculty advisers. Team consists of highly technical and nontechnical skilled members who together in unison manufactures state of the art Champion Go-kart Vehicle.
-
-                    </p>
-                    <Link to="/Gokart">
-                    <button className="vehicle-cta">
-                      <span
-                        className="about-reev-heading"
-                        style={{
-                          fontFamily: "cursive",
-                          color: "red",
-                          fontSize: "19px",
-                        }}
-                      >
-                        Learn More{" "}
-                      </span>{" "}
-                      <i className="fas fa-arrow-right"></i>
-                    </button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.section>
-        )}
-
-        {/* Review Section */}
-        {/* Reviews Section */}
- {isMobile ? (
-  <section
-    ref={reviewsRef}
-    data-section="reviews"
-    className="w-full bg-[#101010] mt-24 flex flex-col justify-start py-8"
-  >
-    <div className="text-center group cursor-pointer mb-6">
-      <h2 className="font-black text-white mb-4 tracking-wide font-mono uppercase relative inline-block text-2xl">
-        Reviews
-        <div
-          className="absolute -bottom-1 left-0 h-[2px] w-full"
-          style={{
-            background: 'linear-gradient(to right, transparent, red, transparent)'
-          }}
-        />
-      </h2>
-    </div>
-
-    {/* Review Carousel */}
-    <div className="w-full px-4">
-      <Swiper
-        modules={[Pagination, Navigation, Autoplay]}
-        spaceBetween={30}
-        slidesPerView={1}
-        centeredSlides={true}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
-        pagination={{
-          clickable: true,
-          bulletClass: 'swiper-pagination-bullet !bg-white/30',
-          bulletActiveClass: 'swiper-pagination-bullet-active !bg-red-600',
-        }}
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }}
-        className="review-swiper !pb-12"
-      >
-        {reviewsData.map((review, index) => (
-          <SwiperSlide key={index}>
-            <div className="flex justify-center">
-              <div className="bg-white/10 rounded-xl p-8 border-2 border-red-600/20 hover:border-red-600 transition w-full max-w-2xl">
-                <div className="flex flex-col items-center text-center">
-                  <img
-                    src={review.image}
-                    alt={review.name}
-                    className="w-20 h-20 rounded-full object-cover mb-6 border-2 border-red-600"
-                  />
-                  <h3 className="text-xl font-bold text-white mb-2 font-mono">
-                    {review.name}
-                  </h3>
-                  <p className="text-red-600 text-sm mb-4 font-medium">
-                    {review.position}
-                  </p>
-                  <p className="text-gray-300 text-base leading-relaxed">
-                    "{review.review}"
-                  </p>
-
-                  {/* ✅ FIXED BUTTON */}
-                  <button
-                    onClick={() => {
-                      setSelectedReview(review);
-                      setShowReviewModal(true);
-                    }}
-                    className="mt-4 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition"
-                  >
-                    View Review
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-
-        <div className="swiper-button-prev !text-white"></div>
-        <div className="swiper-button-next !text-white"></div>
-      </Swiper>
-    </div>
-  </section>
-) : (
-  <motion.section
-    ref={reviewsRef}
-    data-section="reviews"
-    className="w-full bg-[#101010] flex flex-col justify-start min-h-screen pt-36 pb-20 snap-start"
-    style={{ scrollSnapAlign: 'start' }}
-  >
-    <motion.div className="text-center mb-16">
-      <h2 className="font-black text-white text-5xl">Reviews</h2>
-    </motion.div>
-
-    <div className="w-full px-8">
-      <Swiper
-        modules={[Pagination, Navigation, Autoplay]}
-        spaceBetween={30}
-        slidesPerView={1}
-        centeredSlides={true}
-        loop={true}
-        autoplay={{ delay: 5000 }}
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }}
-        breakpoints={{
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        }}
-      >
-        {reviewsData.map((review, index) => (
-          <SwiperSlide key={index}>
-            <div className="flex justify-center">
-              <div className="bg-white/10 rounded-xl w-[27rem] h-[24rem] p-8 border-2 border-red-600/20 hover:border-red-600 transition">
-                <div className="flex flex-col items-center text-center">
-                  <img
-                    src={review.image}
-                    alt={review.name}
-                    className="w-20 h-20 rounded-full object-cover mb-6 border-2 border-red-600"
-                  />
-                  <h3 className="text-xl font-bold text-white mb-2 font-mono">
-                    {review.name}
-                  </h3>
-                  <p className="text-red-600 text-sm mb-4 font-medium">
-                    {review.position}
-                  </p>
-                  <p className="text-gray-300 text-base leading-relaxed">
-                    "{review.review}"
-                  </p>
-
-                  {/* ✅ BUTTON */}
-                  <button
-                    onClick={() => {
-                      setSelectedReview(review);
-                      setShowReviewModal(true);
-                    }}
-                    className="mt-4 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition"
-                  >
-                    View Review
-                  </button>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-
-        <div className="swiper-button-prev !text-white"></div>
-        <div className="swiper-button-next !text-white"></div>
-      </Swiper>
-    </div>
-  </motion.section>
-)}
-
-{/* ✅ MODAL */}
-{showReviewModal && selectedReview && (
-  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-    <div className="bg-white w-[90%] max-w-md rounded-xl p-6 relative text-center">
-
-      {/* Close */}
-      <button
-        onClick={() => {
-          setShowReviewModal(false);
-          setSelectedReview(null); // ✅ reset
-        }}
-        className="absolute top-2 right-3 text-black text-xl font-bold hover:text-red-600"
-      >
-        ✖
-      </button>
-
-      {/* Image */}
-      <img
-        src={selectedReview.image}
-        alt={selectedReview.name}
-        className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
-      />
-
-      {/* Name */}
-      <h2 className="text-xl font-bold text-black">
-        {selectedReview.name}
-      </h2>
-
-      {/* Position */}
-      <p className="text-red-600 text-sm mb-3">
-        {selectedReview.position}
-      </p>
-
-      {/* Review */}
-      <p className="text-gray-700">
-        "{selectedReview.review}"
-      </p>
-    </div>
-  </div>
-)}
-
-  {/* ✅ Reviews Data */}
-
-        {/* Sponsors & Footer Section */}
-        {isMobile ? (
-          <section
-            ref={sponsorsRef}
-            data-section="sponsors"
-            className="w-full bg-[#101010] mt-24 flex flex-col p-0 justify-start"
-          >
-            {/* Sponsors Content */}
-            <div className="text-center group cursor-pointer mb-6">
-              <h2 className="font-black text-white mb-4 tracking-wide font-mono uppercase relative inline-block text-2xl">
-                Sponsors
+      {/* Fleet Showcase Section */}
+      {isMobile ? (
+        <section
+          ref={fleetRef}
+          data-section="fleet"
+          className="w-full bg-[#101010] flex flex-col justify-start pt-8 pb-20 sm:pt-16 sm:pb-28 lg:min-h-screen snap-start"
+          style={{ scrollSnapAlign: 'start' }}
+        >
+          <div className="w-full">
+            {/* Section Header */}
+            <div className="text-center mb-6 sm:mb-12">
+              <h2 className="font-black text-white tracking-wide font-mono uppercase relative inline-block text-2xl sm:text-5xl">
+                OUR FLEET
                 <div
                   className="absolute -bottom-1 left-0 h-[2px] w-full"
-                  style={{
-                    background: 'linear-gradient(to right, transparent, red, transparent)'
-                  }}
+                  style={{ background: 'linear-gradient(to right, transparent, red, transparent)' }}
                 />
               </h2>
             </div>
 
-            {/* Animated Marquee */}
-            <div className="w-full overflow-hidden">
-              <div className="flex w-max animate-marquee">
-                {/* First set of sponsors */}
-                {[
-                  { Icon: slideImg1, name: "Asset 13", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[10rem] mx-[4rem] md:mx-[6rem] invert" },
-                  { Icon: slideImg2, name: "Dynamic Lazer", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg3, name: "Poweron", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg5, name: "Ansys", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[8rem] mx-[4rem] md:mx-[6rem] invert" },
-                  { Icon: slideImg6, name: "Kapras Automation", class: "w-[6rem] h-[6rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg4, name: "Rafftar logo", class: "w-[6rem] h-[6rem] md:w-[8rem] md:h-[8rem] mx-[4rem] md:mx-[6rem]" },
-                ].map((item, index) => (
-                  <img
-                    key={index}
-                    src={item.Icon}
-                    alt={item.name}
-                    draggable="false"
-                    className={`${item.class} opacity-80 hover:opacity-100 transition-opacity duration-300`}
-                  />
-                ))}
-
-                {/* Second set for seamless loop - exact duplicate */}
-                {[
-                  { Icon: slideImg1, name: "Asset 13", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[10rem] mx-[4rem] md:mx-[6rem] invert" },
-                  { Icon: slideImg2, name: "Dynamic Lazer", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg3, name: "Poweron", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg5, name: "Ansys", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[8rem] mx-[4rem] md:mx-[6rem] invert" },
-                  { Icon: slideImg6, name: "Kapras Automation", class: "w-[6rem] h-[6rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg4, name: "Rafftar logo", class: "w-[6rem] h-[6rem] md:w-[8rem] md:h-[8rem] mx-[4rem] md:mx-[6rem]" },
-                ].map((item, index) => (
-                  <img
-                    key={`dup-${index}`}
-                    src={item.Icon}
-                    alt={item.name}
-                    draggable="false"
-                    className={`${item.class} opacity-80 hover:opacity-100 transition-opacity duration-300`}
-                  />
-                ))}
-
-                {/* Third set for extra smoothness */}
-                {[
-                  { Icon: slideImg1, name: "Asset 13", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[10rem] mx-[4rem] md:mx-[6rem] invert" },
-                  { Icon: slideImg2, name: "Dynamic Lazer", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg3, name: "Poweron", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg5, name: "Ansys", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[8rem] mx-[4rem] md:mx-[6rem] invert" },
-                  { Icon: slideImg6, name: "Kapras Automation", class: "w-[6rem] h-[6rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg4, name: "Rafftar logo", class: "w-[6rem] h-[6rem] md:w-[8rem] md:h-[8rem] mx-[4rem] md:mx-[6rem]" },
-                ].map((item, index) => (
-                  <img
-                    key={`third-${index}`}
-                    src={item.Icon}
-                    alt={item.name}
-                    draggable="false"
-                    className={`${item.class} opacity-80 hover:opacity-100 transition-opacity duration-300`}
-                  />
-                ))}
+            {/* Fleet Grid */}
+            <div className="max-w-7xl pt-8 mx-auto w-[90%] xl:w-[80%] grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {/* Vehicle Card Example */}
+              <div className="vehicle-card">
+                <div className="header">
+                  <h3 className="text-red-500 font-cursive text-xl sm:text-2xl">
+                    REEV Racer
+                  </h3>
+                </div>
+                <div className="card-content">
+                  <div className="card-image">
+                    <img src={ev} alt="REEV" className="w-full h-auto rounded-lg" />
+                  </div>
+                  <div className="card-header">
+                    <span className="card-subtitle text-white text-sm sm:text-base">Electric Hypercar</span>
+                  </div>
+                  <p className="text-white font-light text-sm sm:text-lg leading-relaxed">
+                    Resonance Racing is a Collegiate Motorsports club of AISSMS COE which provides an opportunity for students to pursue their passion for automobile engineering REEV team is a subsidiary of Resonance Racing which was started in 2021 with aim of competing in SAE Competition.
+                    Resonance Racing REEV highly backed by college administration, and experienced faculty advisers. Team consists of highly technical skilled members who together in unison manufactures state of the art Champion.
+                  </p>
+                  <button className="vehicle-cta mt-2 sm:mt-4">
+                    <span className="text-red-500 font-cursive text-sm sm:text-base">Learn More</span>
+                    <i className="fas fa-arrow-right ml-2"></i>
+                  </button>
+                </div>
               </div>
+
+              <div className="vehicle-card">
+                <div className="header">
+                  <h3 className="text-red-500 font-cursive text-xl sm:text-2xl">
+                    REEV Racer
+                  </h3>
+                </div>
+                <div className="card-content">
+                  <div className="card-image">
+                    <img src={go} alt="REEV" className="w-full h-auto rounded-lg" />
+                  </div>
+                  <div className="card-header">
+                    <span className="card-subtitle text-white text-sm sm:text-base">Electric Hypercar</span>
+                  </div>
+                  <p className="text-white font-light text-sm sm:text-lg leading-relaxed">
+                    Resonance Racing is a Collegiate Motorsports club of AISSMS COE which provides an opportunity for students to pursue their passion for automobile engineering GO KART team is a subsidiary of Resonance Racing which was started in 2014 with aim of competing in National level Go Karting Championships. Resonance Racing Go-kart is highly backed by college administration, and experienced faculty advisers. Team consists of highly technical and nontechnical skilled members who together in unison manufactures state of the art Champion Go-kart Vehicle.
+
+                  </p>
+                  <button className="vehicle-cta mt-2 sm:mt-4">
+                    <span className="text-red-500 font-cursive text-sm sm:text-base">Learn More</span>
+                    <i className="fas fa-arrow-right ml-2"></i>
+                  </button>
+                </div>
+              </div>
+
+              {/* Repeat Vehicle Cards */}
             </div>
-          </section>
-        ) : (
-          <motion.section
-            ref={sponsorsRef}
-            data-section="sponsors"
-            className="w-full bg-[#101010] flex flex-col min-h-screen pt-36 justify-between snap-start"
-            style={{ scrollSnapAlign: 'start' }}
-            initial="hidden"
-            animate={undefined}
-            whileInView="visible"
-            whileHover="hovered"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {/* Sponsors Content */}
+          </div>
+        </section>
+      ) : (
+        <motion.section
+          ref={fleetRef}
+          data-section="fleet"
+          className="w-full bg-[#101010] flex flex-col justify-start min-h-screen pt-36 pb-20 snap-start"
+          style={{ scrollSnapAlign: 'start' }}
+          initial="hidden"
+          animate={undefined}
+          whileHover="hovered"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <div className="w-full">
+            {/* Section Header */}
             <motion.div
               className="text-center group cursor-pointer mb-16"
               variants={fadeInUp}
             >
               <h2 className="font-black text-white mb-4 tracking-wide font-mono uppercase relative inline-block text-5xl">
-                Sponsors
+                OUR FLEET
                 <motion.div
                   className="absolute -bottom-1 left-0 h-[2px] w-full"
                   style={{
@@ -976,6 +556,7 @@
                   }}
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
+                  whileHover={{ scaleX: 1 }}
                   variants={{
                     visible: { scaleX: 0 },
                     hovered: { scaleX: 1 },
@@ -987,82 +568,498 @@
                 />
               </h2>
             </motion.div>
+          </div>
 
-            {/* Animated Marquee */}
-            <motion.div
-              className="w-full overflow-hidden"
-              variants={fadeInUp}
-            >
-              <div className="flex w-max animate-marquee">
-                {/* First set of sponsors */}
-                {[
-                  { Icon: slideImg1, name: "Asset 13", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[10rem] mx-[4rem] md:mx-[6rem] invert" },
-                  { Icon: slideImg2, name: "Dynamic Lazer", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg3, name: "Poweron", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg5, name: "Ansys", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[8rem] mx-[4rem] md:mx-[6rem] invert" },
-                  { Icon: slideImg6, name: "Kapras Automation", class: "w-[6rem] h-[6rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg4, name: "Rafftar logo", class: "w-[6rem] h-[6rem] md:w-[8rem] md:h-[8rem] mx-[4rem] md:mx-[6rem]" },
-                ].map((item, index) => (
-                  <img
-                    key={index}
-                    src={item.Icon}
-                    alt={item.name}
-                    draggable="false"
-                    className={`${item.class} opacity-80 hover:opacity-100 transition-opacity duration-300`}
-                  />
-                ))}
-
-                {/* Second set for seamless loop - exact duplicate */}
-                {[
-                  { Icon: slideImg1, name: "Asset 13", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[10rem] mx-[4rem] md:mx-[6rem] invert" },
-                  { Icon: slideImg2, name: "Dynamic Lazer", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg3, name: "Poweron", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg5, name: "Ansys", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[8rem] mx-[4rem] md:mx-[6rem] invert" },
-                  { Icon: slideImg6, name: "Kapras Automation", class: "w-[6rem] h-[6rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg4, name: "Rafftar logo", class: "w-[6rem] h-[6rem] md:w-[8rem] md:h-[8rem] mx-[4rem] md:mx-[6rem]" },
-                ].map((item, index) => (
-                  <img
-                    key={`dup-${index}`}
-                    src={item.Icon}
-                    alt={item.name}
-                    draggable="false"
-                    className={`${item.class} opacity-80 hover:opacity-100 transition-opacity duration-300`}
-                  />
-                ))}
-
-                {/* Third set for extra smoothness */}
-                {[
-                  { Icon: slideImg1, name: "Asset 13", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[10rem] mx-[4rem] md:mx-[6rem] invert" },
-                  { Icon: slideImg2, name: "Dynamic Lazer", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg3, name: "Poweron", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg5, name: "Ansys", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[8rem] mx-[4rem] md:mx-[6rem] invert" },
-                  { Icon: slideImg6, name: "Kapras Automation", class: "w-[6rem] h-[6rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
-                  { Icon: slideImg4, name: "Rafftar logo", class: "w-[6rem] h-[6rem] md:w-[8rem] md:h-[8rem] mx-[4rem] md:mx-[6rem]" },
-                ].map((item, index) => (
-                  <img
-                    key={`third-${index}`}
-                    src={item.Icon}
-                    alt={item.name}
-                    draggable="false"
-                    className={`${item.class} opacity-80 hover:opacity-100 transition-opacity duration-300`}
-                  />
-                ))}
+          {/* Fleet Grid */}
+          <div className="max-w-7xl mx-auto w-[90%] xl:w-[80%]">
+            <div className="vehicles-grid">
+              {/* Vehicle Card 1 */}
+              <div className="vehicle-card reev-card active">
+                <div className="header">
+                  <h3>
+                    <span
+                      style={{
+                        fontFamily: "cursive",
+                        color: "red",
+                      }}
+                    >
+                      About{" "}
+                    </span>
+                    Reev
+                  </h3>
+                </div>
+                <div className="card-content">
+                  <div className="card-image">
+                    <img
+                      src={ev}
+                      alt="REEV"
+                    />
+                  </div>
+                  <div className="card-header">
+                    <br></br>
+                    <span className="card-subtitle">Electric Hypercar</span>
+                  </div>
+                  <p className="text-lg lg:text-xl leading-relaxed text-white font-light max-w-2xl">
+                    Resonance Racing is a Collegiate Motorsports club of AISSMS COE which provides an opportunity for students to pursue their passion for automobile engineering REEV team is a subsidiary of Resonance Racing which was started in 2021 with aim of competing in SAE Competition.
+                    Resonance Racing REEV highly backed by college administration, and experienced faculty advisers. Team consists of highly technical skilled members who together in unison manufactures state of the art Champion.<br></br><br></br><br></br>
+                  </p>
+                  <Link to="/Reev">
+                    <button className="vehicle-cta">
+                      <span
+                        className="about-reev-heading"
+                        style={{
+                          fontFamily: "cursive",
+                          color: "red",
+                          fontSize: "19px",
+                        }}
+                      >
+                        Learn More{" "}
+                      </span>{" "}
+                      <i className="fas fa-arrow-right"></i>
+                    </button>
+                  </Link>
+                </div>
               </div>
-            </motion.div>
 
-            {/* Footer Content Integrated */}
-            <motion.footer
-              className="bg-black w-full text-white px-[8%] lg:px-[12%] pt-1 mt-auto grid items-center py-[1rem] font-mono"
+              {/* Vehicle Card 2 */}
+              <div className="vehicle-card reev-card active">
+                <div className="header">
+                  <h3>
+                    <span
+                      style={{
+                        fontFamily: "cursive",
+                        color: "red",
+                      }}
+                    >
+                      About{" "}
+                    </span>{" "}
+                    GoKart
+                  </h3>
+                </div>
+                <div className="card-content">
+                  <div className="card-image">
+                    <img
+                      src={go}
+                      alt="GoKart"
+                    />
+                  </div>
+                  <div className="card-header">
+                    <br></br>
+                    <span className="card-subtitle">Electric Car</span>
+                  </div>
+                  <p className="text-lg lg:text-xl leading-relaxed text-white font-light max-w-2xl">
+                    Resonance Racing is a Collegiate Motorsports club of AISSMS COE which provides an opportunity for students to pursue their passion for automobile engineering GO KART team is a subsidiary of Resonance Racing which was started in 2014 with aim of competing in National level Go Karting Championships. Resonance Racing Go-kart is highly backed by college administration, and experienced faculty advisers. Team consists of highly technical and nontechnical skilled members who together in unison manufactures state of the art Champion Go-kart Vehicle.
+
+                  </p>
+                  <Link to="/Gokart">
+                    <button className="vehicle-cta">
+                      <span
+                        className="about-reev-heading"
+                        style={{
+                          fontFamily: "cursive",
+                          color: "red",
+                          fontSize: "19px",
+                        }}
+                      >
+                        Learn More{" "}
+                      </span>{" "}
+                      <i className="fas fa-arrow-right"></i>
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+      )}
+
+      {/* Review Section */}
+      {/* Reviews Section */}
+      {isMobile ? (
+
+        <section
+          ref={reviewsRef}
+          data-section="reviews"
+          className="w-full bg-[#101010] mt-24 flex flex-col justify-start py-8 relative"
+        >
+          <div className="text-center group cursor-pointer mb-6">
+            <h2 className="font-black text-white mb-4 tracking-wide font-mono uppercase relative inline-block text-2xl">
+              Reviews
+              <div
+                className="absolute -bottom-1 left-0 h-[2px] w-full"
+                style={{
+                  background: 'linear-gradient(to right, transparent, red, transparent)'
+                }}
+              />
+            </h2>
+          </div>
+
+          {/* Review Carousel */}
+          <div className="w-full px-4">
+            <Swiper
+              modules={[Pagination, Navigation, Autoplay]}
+              spaceBetween={30}
+              slidesPerView={1}
+              centeredSlides={true}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              pagination={{
+                clickable: true,
+                bulletClass: 'swiper-pagination-bullet !bg-white/30',
+                bulletActiveClass: 'swiper-pagination-bullet-active !bg-red-600',
+              }}
+              navigation={{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              }}
+              className="review-swiper !pb-12"
             >
-              <Footer />
-            </motion.footer>
-          </motion.section>
-        )}
+              {reviewsData.map((review, index) => (
+                <SwiperSlide key={index}>
+                  <div className="flex justify-center">
+                    <div className="bg-white/10 rounded-xl p-8 border-2 border-red-600/20 hover:border-red-600 transition w-full max-w-2xl">
+                      <div className="flex flex-col items-center text-center">
+                        <img
+                          src={review.image}
+                          alt={review.name}
+                          className="w-20 h-20 rounded-full object-cover mb-6 border-2 border-red-600"
+                        />
+                        <h3 className="text-xl font-bold text-white mb-2 font-mono">
+                          {review.name}
+                        </h3>
+                        <p className="text-red-600 text-sm mb-4 font-medium">
+                          {review.position}
+                        </p>
+                        <p className="text-gray-300 text-base leading-relaxed">
+                          "{review.review}"
+                        </p>
 
-        {isMobile && (
-          <Footer />
-        )}
-      </main>
-    );
-  }
+                        {/* ✅ FIXED BUTTON */}
+                        <button
+                          onClick={() => {
+                            setSelectedReview(review);
+                            setShowReviewModal(true);
+                          }}
+                          className="mt-4 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition"
+                        >
+                          View Review
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+
+              <div className="swiper-button-prev !text-white"></div>
+              <div className="swiper-button-next !text-white"></div>
+            </Swiper>
+          </div>
+          {showReviewModal && selectedReview && (
+            <div className="absolute inset-0 bg-black/70 flex items-center justify-center z-50">
+              <div className="bg-white w-[90%] max-w-md rounded-xl p-6 relative text-center">
+
+                <button
+                  onClick={() => {
+                    setShowReviewModal(false);
+                    setSelectedReview(null);
+                  }}
+                  className="absolute top-2 right-3 text-black text-xl font-bold hover:text-red-600"
+                >
+                  ✖
+                </button>
+
+                <img
+                  src={selectedReview.image}
+                  alt={selectedReview.name}
+                  className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+                />
+
+                <h2 className="text-xl font-bold text-black">
+                  {selectedReview.name}
+                </h2>
+
+                <p className="text-red-600 text-sm mb-3">
+                  {selectedReview.position}
+                </p>
+
+                <p className="text-gray-700">
+                  "{selectedReview.review}"
+                </p>
+              </div>
+            </div>
+          )}
+        </section>
+      ) : (
+        <motion.section
+          ref={reviewsRef}
+          data-section="reviews"
+          className="w-full bg-[#101010] flex flex-col justify-start min-h-screen pt-36 pb-20 snap-start relative"
+          style={{ scrollSnapAlign: 'start' }}
+        >
+          <motion.div className="text-center mb-16">
+            <h2 className="font-black text-white text-5xl">Reviews</h2>
+          </motion.div>
+
+          <div className="w-full px-8">
+            <Swiper
+              modules={[Pagination, Navigation, Autoplay]}
+              spaceBetween={30}
+              slidesPerView={1}
+              centeredSlides={true}
+              loop={true}
+              autoplay={{ delay: 5000 }}
+              navigation={{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              }}
+              breakpoints={{
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+              }}
+            >
+              {reviewsData.map((review, index) => (
+                <SwiperSlide key={index}>
+                  <div className="flex justify-center">
+                    <div className="bg-white/10 rounded-xl w-[27rem] h-[24rem] p-8 border-2 border-red-600/20 hover:border-red-600 transition">
+                      <div className="flex flex-col items-center text-center">
+                        <img
+                          src={review.image}
+                          alt={review.name}
+                          className="w-20 h-20 rounded-full object-cover mb-6 border-2 border-red-600"
+                        />
+                        <h3 className="text-xl font-bold text-white mb-2 font-mono">
+                          {review.name}
+                        </h3>
+                        <p className="text-red-600 text-sm mb-4 font-medium">
+                          {review.position}
+                        </p>
+                        <p className="text-gray-300 text-base leading-relaxed">
+                          "{review.review}"
+                        </p>
+
+                        {/* ✅ BUTTON */}
+                        <button
+                          onClick={() => {
+                            setSelectedReview(review);
+                            setShowReviewModal(true);
+                          }}
+                          className="mt-4 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition"
+                        >
+                          View Review
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+
+              <div className="swiper-button-prev !text-white"></div>
+              <div className="swiper-button-next !text-white"></div>
+            </Swiper>
+          </div>
+        </motion.section>
+      )}
+
+      {/* ✅ MODAL */}
+
+
+      {/* ✅ Reviews Data */}
+
+      {/* Sponsors & Footer Section */}
+      {isMobile ? (
+        <section
+          ref={sponsorsRef}
+          data-section="sponsors"
+          className="w-full bg-[#101010] mt-24 flex flex-col p-0 justify-start"
+        >
+          {/* Sponsors Content */}
+          <div className="text-center group cursor-pointer mb-6">
+            <h2 className="font-black text-white mb-4 tracking-wide font-mono uppercase relative inline-block text-2xl">
+              Sponsors
+              <div
+                className="absolute -bottom-1 left-0 h-[2px] w-full"
+                style={{
+                  background: 'linear-gradient(to right, transparent, red, transparent)'
+                }}
+              />
+            </h2>
+          </div>
+
+          {/* Animated Marquee */}
+          <div className="w-full overflow-hidden">
+            <div className="flex w-max animate-marquee">
+              {/* First set of sponsors */}
+              {[
+                { Icon: slideImg1, name: "Asset 13", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[10rem] mx-[4rem] md:mx-[6rem] invert" },
+                { Icon: slideImg2, name: "Dynamic Lazer", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg3, name: "Poweron", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg5, name: "Ansys", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[8rem] mx-[4rem] md:mx-[6rem] invert" },
+                { Icon: slideImg6, name: "Kapras Automation", class: "w-[6rem] h-[6rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg4, name: "Rafftar logo", class: "w-[6rem] h-[6rem] md:w-[8rem] md:h-[8rem] mx-[4rem] md:mx-[6rem]" },
+              ].map((item, index) => (
+                <img
+                  key={index}
+                  src={item.Icon}
+                  alt={item.name}
+                  draggable="false"
+                  className={`${item.class} opacity-80 hover:opacity-100 transition-opacity duration-300`}
+                />
+              ))}
+
+              {/* Second set for seamless loop - exact duplicate */}
+              {[
+                { Icon: slideImg1, name: "Asset 13", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[10rem] mx-[4rem] md:mx-[6rem] invert" },
+                { Icon: slideImg2, name: "Dynamic Lazer", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg3, name: "Poweron", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg5, name: "Ansys", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[8rem] mx-[4rem] md:mx-[6rem] invert" },
+                { Icon: slideImg6, name: "Kapras Automation", class: "w-[6rem] h-[6rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg4, name: "Rafftar logo", class: "w-[6rem] h-[6rem] md:w-[8rem] md:h-[8rem] mx-[4rem] md:mx-[6rem]" },
+              ].map((item, index) => (
+                <img
+                  key={`dup-${index}`}
+                  src={item.Icon}
+                  alt={item.name}
+                  draggable="false"
+                  className={`${item.class} opacity-80 hover:opacity-100 transition-opacity duration-300`}
+                />
+              ))}
+
+              {/* Third set for extra smoothness */}
+              {[
+                { Icon: slideImg1, name: "Asset 13", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[10rem] mx-[4rem] md:mx-[6rem] invert" },
+                { Icon: slideImg2, name: "Dynamic Lazer", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg3, name: "Poweron", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg5, name: "Ansys", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[8rem] mx-[4rem] md:mx-[6rem] invert" },
+                { Icon: slideImg6, name: "Kapras Automation", class: "w-[6rem] h-[6rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg4, name: "Rafftar logo", class: "w-[6rem] h-[6rem] md:w-[8rem] md:h-[8rem] mx-[4rem] md:mx-[6rem]" },
+              ].map((item, index) => (
+                <img
+                  key={`third-${index}`}
+                  src={item.Icon}
+                  alt={item.name}
+                  draggable="false"
+                  className={`${item.class} opacity-80 hover:opacity-100 transition-opacity duration-300`}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : (
+        <motion.section
+          ref={sponsorsRef}
+          data-section="sponsors"
+          className="w-full bg-[#101010] flex flex-col min-h-screen pt-36 justify-between snap-start"
+          style={{ scrollSnapAlign: 'start' }}
+          initial="hidden"
+          animate={undefined}
+          whileInView="visible"
+          whileHover="hovered"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {/* Sponsors Content */}
+          <motion.div
+            className="text-center group cursor-pointer mb-16"
+            variants={fadeInUp}
+          >
+            <h2 className="font-black text-white mb-4 tracking-wide font-mono uppercase relative inline-block text-5xl">
+              Sponsors
+              <motion.div
+                className="absolute -bottom-1 left-0 h-[2px] w-full"
+                style={{
+                  background: 'linear-gradient(to right, transparent, red, transparent)'
+                }}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                variants={{
+                  visible: { scaleX: 0 },
+                  hovered: { scaleX: 1 },
+                }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeInOut"
+                }}
+              />
+            </h2>
+          </motion.div>
+
+          {/* Animated Marquee */}
+          <motion.div
+            className="w-full overflow-hidden"
+            variants={fadeInUp}
+          >
+            <div className="flex w-max animate-marquee">
+              {/* First set of sponsors */}
+              {[
+                { Icon: slideImg1, name: "Asset 13", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[10rem] mx-[4rem] md:mx-[6rem] invert" },
+                { Icon: slideImg2, name: "Dynamic Lazer", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg3, name: "Poweron", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg5, name: "Ansys", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[8rem] mx-[4rem] md:mx-[6rem] invert" },
+                { Icon: slideImg6, name: "Kapras Automation", class: "w-[6rem] h-[6rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg4, name: "Rafftar logo", class: "w-[6rem] h-[6rem] md:w-[8rem] md:h-[8rem] mx-[4rem] md:mx-[6rem]" },
+              ].map((item, index) => (
+                <img
+                  key={index}
+                  src={item.Icon}
+                  alt={item.name}
+                  draggable="false"
+                  className={`${item.class} opacity-80 hover:opacity-100 transition-opacity duration-300`}
+                />
+              ))}
+
+              {/* Second set for seamless loop - exact duplicate */}
+              {[
+                { Icon: slideImg1, name: "Asset 13", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[10rem] mx-[4rem] md:mx-[6rem] invert" },
+                { Icon: slideImg2, name: "Dynamic Lazer", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg3, name: "Poweron", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg5, name: "Ansys", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[8rem] mx-[4rem] md:mx-[6rem] invert" },
+                { Icon: slideImg6, name: "Kapras Automation", class: "w-[6rem] h-[6rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg4, name: "Rafftar logo", class: "w-[6rem] h-[6rem] md:w-[8rem] md:h-[8rem] mx-[4rem] md:mx-[6rem]" },
+              ].map((item, index) => (
+                <img
+                  key={`dup-${index}`}
+                  src={item.Icon}
+                  alt={item.name}
+                  draggable="false"
+                  className={`${item.class} opacity-80 hover:opacity-100 transition-opacity duration-300`}
+                />
+              ))}
+
+              {/* Third set for extra smoothness */}
+              {[
+                { Icon: slideImg1, name: "Asset 13", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[10rem] mx-[4rem] md:mx-[6rem] invert" },
+                { Icon: slideImg2, name: "Dynamic Lazer", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg3, name: "Poweron", class: "w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg5, name: "Ansys", class: "w-[8rem] h-[8rem] md:w-[12rem] md:h-[8rem] mx-[4rem] md:mx-[6rem] invert" },
+                { Icon: slideImg6, name: "Kapras Automation", class: "w-[6rem] h-[6rem] md:w-[10rem] md:h-[10rem] mx-[4rem] md:mx-[6rem]" },
+                { Icon: slideImg4, name: "Rafftar logo", class: "w-[6rem] h-[6rem] md:w-[8rem] md:h-[8rem] mx-[4rem] md:mx-[6rem]" },
+              ].map((item, index) => (
+                <img
+                  key={`third-${index}`}
+                  src={item.Icon}
+                  alt={item.name}
+                  draggable="false"
+                  className={`${item.class} opacity-80 hover:opacity-100 transition-opacity duration-300`}
+                />
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Footer Content Integrated */}
+          <motion.footer
+            className="bg-black w-full text-white px-[8%] lg:px-[12%] pt-1 mt-auto grid items-center py-[1rem] font-mono"
+          >
+            <Footer />
+          </motion.footer>
+        </motion.section>
+      )}
+
+      {isMobile && (
+        <Footer />
+      )}
+    </main>
+  );
+}
 
