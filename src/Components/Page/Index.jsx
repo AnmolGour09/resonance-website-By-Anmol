@@ -860,6 +860,40 @@ export default function Index() {
               <div className="swiper-button-next !text-white"></div>
             </Swiper>
           </div>
+          {showReviewModal && selectedReview && (
+            <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-[999]">
+              <div className="bg-white w-[90%] max-w-md rounded-xl p-6 relative text-center">
+
+                <button
+                  onClick={() => {
+                    setShowReviewModal(false);
+                    setSelectedReview(null);
+                  }}
+                  className="absolute top-2 right-3 text-black text-xl font-bold hover:text-red-600"
+                >
+                  ✖
+                </button>
+
+                <img
+                  src={selectedReview.image}
+                  alt={selectedReview.name}
+                  className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+                />
+
+                <h2 className="text-xl font-bold text-black">
+                  {selectedReview.name}
+                </h2>
+
+                <p className="text-red-600 text-sm mb-3">
+                  {selectedReview.position}
+                </p>
+
+                <p className="text-gray-700">
+                  "{selectedReview.review}"
+                </p>
+              </div>
+            </div>
+          )}
         </motion.section>
       )}
 
